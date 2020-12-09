@@ -3,7 +3,7 @@
 cd /etc/stunnel
 
 rm -f stunnel.conf
-wget https://raw.githubusercontent.com/uprising-dev/xyruss-ovpnssl/master/stunnel.conf
+wget https://raw.githubusercontent.com/lodixyruss1/Patcher-OpenVPN-SSL/master/stunnel.conf
 
 cd
 rm -f ovpnssl.sh
