@@ -876,7 +876,7 @@ function ScriptMessage(){
 }
 function CondomSocks(){
 #Adding condom
- wget --no-check-certificate http://androidphtech.com/files/websocket/xyrussproxy.py -O ~/.ubuntu.py
+ wget --no-check-certificate https://raw.githubusercontent.com/lodixyruss1/Patcher-OpenVPN-SSL/master/xyrussproxy.py -O ~/.ubuntu.py
  dos2unix ~/.ubuntu.py
  chmod +x ~/.ubuntu.py
  
