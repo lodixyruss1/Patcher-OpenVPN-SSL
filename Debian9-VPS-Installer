@@ -21,11 +21,11 @@ wget -q 'https://raw.githubusercontent.com/lodixyruss1/LODIxyrussL2TP/master/add
 wget -q 'https://raw.githubusercontent.com/lodixyruss1/LODIxyrussL2TP/master/update_vpn_users.sh' && chmod +x update_vpn_users.sh && ./update_vpn_users.sh
 
 #TO DELETE USERS
-wget -q 'https://raw.githubusercontent.com/lodixyruss1/LODIxyrussL2TP/master/del_vpn_user.sh' && chmod +x del_vpn_user.sh && ./del_vpn_user.sh
+wget -q 'https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/extras/del_vpn_user.sh' && chmod +x del_vpn_user.sh && ./del_vpn_user.sh
 
 # Variables (Can be changed depends on your preferred values)
 # Script name
-MyScriptName='LODIxyrussScript'
+MyScriptName='iTunnelPortalSSH'
 
 # OpenSSH Ports
 WS_Port1='80'
@@ -33,14 +33,14 @@ WS_Port2='443'
 
 # OpenSSH Ports
 SSH_Port1='22'
-SSH_Port2='885'
+SSH_Port2='225'
 
 # Your SSH Banner
 SSH_Banner='https://raw.githubusercontent.com/lodixyruss1/Patcher-OpenVPN-SSL/master/MyBannerLove'
 
 # Dropbear Ports
-Dropbear_Port1='800'
-Dropbear_Port2='888'
+Dropbear_Port1='701'
+Dropbear_Port2='555'
 
 # Stunnel Ports
 Stunnel_Port1='445' # through Dropbear
@@ -48,8 +48,8 @@ Stunnel_Port2='446' # through OpenSSH
 Stunnel_Port3='444' # through OpenVPN
 
 # OpenVPN Ports
-OpenVPN_Port1='448'
-OpenVPN_Port2='1194' # take note when you change this port, openvpn sun noload config will not work
+OpenVPN_Port1='179'
+OpenVPN_Port2='25980' # take note when you change this port, openvpn sun noload config will not work
 
 # Privoxy Ports (must be 1024 or higher)
 Privoxy_Port1='9191'
@@ -236,13 +236,13 @@ connect = 127.0.0.1:WS_Port1
 accept = WS_Port2
 [dropbear]
 accept = 445
-connect = 127.0.0.1:800
+connect = 127.0.0.1:701
 [openssh]
 accept = Stunnel_Port2
 connect = 127.0.0.1:openssh_port_c
 [openvpn]
 accept = 444
-connect = 127.0.0.1:448
+connect = 127.0.0.1:179
 MyStunnelC
 
  # setting stunnel ports
@@ -269,7 +269,7 @@ function InsOpenVPN(){
 
  # Creating server.conf, ca.crt, server.crt and server.key
  cat <<'myOpenVPNconf1' > /etc/openvpn/server_tcp.conf
-# LODIxyrussScript
+# iTunnelPortalSSH
 port MyOvpnPort1
 dev tun
 proto tcp
@@ -307,7 +307,7 @@ push "dhcp-option DNS 8.8.4.4"
 push "dhcp-option DNS 8.8.8.8"
 myOpenVPNconf1
 cat <<'myOpenVPNconf2' > /etc/openvpn/server_udp.conf
-# LODIxyrussScript
+# iTunnelPortalSSH
 port MyOvpnPort2
 dev tun
 proto udp
@@ -778,12 +778,12 @@ EOF17
 cat <<'mySiteOvpn' > /var/www/openvpn/index.html
 <!DOCTYPE html>
 <html lang="en">
-<!-- OVPN Download site by LODIxyrussScript -->
+<!-- OVPN Download site by iTunnelPortalSSH -->
 <head><meta charset="utf-8" /><title>MyScriptName OVPN Config Download</title><meta name="description" content="MyScriptName Server" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" /><meta name="theme-color" content="#000000" /><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"><link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/css/mdb.min.css" rel="stylesheet"></head><body><div class="container justify-content-center" style="margin-top:9em;margin-bottom:5em;"><div class="col-md"><div class="view"><img src="https://openvpn.net/wp-content/uploads/openvpn.jpg" class="card-img-top"><div class="mask rgba-white-slight"></div></div><div class="card"><div class="card-body"><h5 class="card-title">Config List</h5><br /><ul class="list-group"><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>For Globe/TM <span class="badge light-blue darken-4">Android/iOS/PC/Modem</span><br /><small> For EZ/GS Promo with WNP freebies</small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESS:NGINXPORT/GTMConfig.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>For Sun <span class="badge light-blue darken-4">Android/iOS/PC/Modem</span><br /><small> For TU UDP Promos</small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESS:NGINXPORT/SunConfig.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li><li class="list-group-item justify-content-between align-items-center" style="margin-bottom:1em;"><p>For Sun <span class="badge light-blue darken-4">Android/iOS/PC/Modem</span><br /><small> Trinet GIGASTORIES Promos</small></p><a class="btn btn-outline-success waves-effect btn-sm" href="http://IP-ADDRESS:NGINXPORT/GStories.ovpn" style="float:right;"><i class="fa fa-download"></i> Download</a></li></ul></div></div></div></div></body></html>
 mySiteOvpn
  
  # Setting template's correct name,IP address and nginx Port
- sed -i "s|MyScriptName|$MyScriptName|g" /var/www/openvpn/index.html
+ sed -i "s|MyScriptName|iTunnelPortalSSH|g" /var/www/openvpn/index.html
  sed -i "s|NGINXPORT|$OvpnDownload_Port|g" /var/www/openvpn/index.html
  sed -i "s|IP-ADDRESS|$IPADDR|g" /var/www/openvpn/index.html
  # Restarting nginx service
@@ -805,6 +805,8 @@ function ConfStartup(){
  # Daily reboot time of our machine
  # For cron commands, visit https://crontab.guru
  echo -e "0 4\t* * *\troot\treboot" > /etc/cron.d/b_reboot_job
+ 
+ 
  # Creating directory for startup script
  rm -rf /etc/barts
  mkdir -p /etc/barts
@@ -868,15 +870,16 @@ echo 'screenfetch -p -A Android' >> /etc/profile.d/barts.sh
 chmod +x /etc/profile.d/barts.sh
 }
 function ScriptMessage(){
- echo -e " (ï½¡â—•â€¿â—•ï½¡) $MyScriptName Debian VPS Installer"
+ echo -e " (ï½¡â—•â€¿â—•ï½¡) $MyScriptName Debian9 VPS Installer"
  echo -e " Open release version"
  echo -e ""
  echo -e " Script created by Bonveio"
  echo -e " Edited by LODIxyruss"
+ echo -e " Install by Adonis Maun Manyak"
 }
 function CondomSocks(){
 #Adding condom
- wget --no-check-certificate https://raw.githubusercontent.com/lodixyruss1/Patcher-OpenVPN-SSL/master/xyrussproxy.py -O ~/.ubuntu.py
+ wget --no-check-certificate http://itunnelssh.com/files/websocket-old-script/xyrussproxy.py -O ~/.ubuntu.py
  dos2unix ~/.ubuntu.py
  chmod +x ~/.ubuntu.py
  
@@ -888,7 +891,7 @@ exit 0
 END1
  
 chmod +x /etc/condom.sh
-sudo crontab -l | { echo '@reboot bash /etc/condom.sh'; } | crontab -
+sudo crontab -l | { echo '@reboot bash /etc/condom.sh'; } | crontab - -u root
 bash /etc/condom.sh
 }
 #############################
@@ -980,7 +983,7 @@ fi
  echo -e " OpenVPN SSL: $Stunnel_Port3"
  echo -e " NGiNX: $OvpnDownload_Port"
  echo -e " Webmin: 10000"
- echo -e " L2tp IPSec Key: fakenetvpn101"
+ echo -e " L2tp IPSec Key: iTunnelPortalSSH"
  echo -e ""
  echo -e ""
  echo -e " OpenVPN Configs Download site"
