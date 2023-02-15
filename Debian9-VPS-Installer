@@ -875,7 +875,7 @@ function ScriptMessage(){
  echo -e ""
  echo -e " Script created by Bonveio"
  echo -e " Edited by LODIxyruss"
- echo -e " Install by Adonis Maun Manyak"
+ echo -e " Install by Jue Htet"
 }
 function CondomSocks(){
 #Adding condom
@@ -987,10 +987,6 @@ fi
  echo -e " Webmin: 10000"
  echo -e " L2tp IPSec Key: iTunnelPortalSSH"
  echo -e ""
- echo -e " SlowDNS: beeg.com"
- echo -e " v2ray: youporn.com"
- echo -e " Shadowsocks: pornhub.com"
- echo -e " Wireguard: youjizz.com"
  echo -e ""
  echo -e " OpenVPN Configs Download site"
  echo -e " http://$IPADDR:$OvpnDownload_Port"
